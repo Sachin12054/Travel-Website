@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample 103</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .thumbnails img {
+            width: 100px;
+            height: auto;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+        }
+        .details {
+            margin-top: 20px;
+        }
+        .details h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .details p {
+            font-size: 14px;
+            color: #555;
+        }
+        .ratings, .reviews {
+            margin-top: 20px;
+        }
+        .rating-stars {
+            color: #f5c518;
+        }
+        .reviews .review {
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .review-date {
+            color: #888;
+            font-size: 12px;
+        }
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .button-container .price {
+            font-size: 18px;
+            color: #28a745;
+        }
+        .button-container .book-now {
+            background-color: #ffc107;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .facilities {
+            margin-top: 20px;
+        }
+        .facilities h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .facilities ul {
+            list-style: none;
+            padding: 0;
+        }
+        .facilities ul li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .facilities ul li img {
+            margin-right: 10px;
+        }
+        .facilities ul li a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .facilities ul li a:hover {
+            text-decoration: underline;
+        }
+                .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px; /* Adjust size as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const imagePaths = [
+                "/dedicated destinations/Dubai/Dubai1.jpg",
+                "/dedicated destinations/Dubai/Dubai2.webp",
+                "/dedicated destinations/Dubai/Dubai3.jpg",
+                "/dedicated destinations/Dubai/Dubai4.jpg",
+                "/dedicated destinations/Dubai/Dubai5.jpg",
+                "/dedicated destinations/Dubai/Dubai6.jpg",
+                "/dedicated destinations/Dubai/Dubai7.jpg",
+                "/dedicated destinations/Dubai/Dubai8.webp",
+            ];
+
+            const facilities = [
+                { img: "/img/air-conditioner.png", text: "Air conditioner" },
+                { img: "/img/Clock.png", text: "Receptionist 24h" },
+                { img: "/img/swimming-pool.png", text: "Swimming pool" },
+                { img: "/img/cocktail.png", text: "Lounge bar & cafe" }
+            ];
+
+            const mainImageElement = document.getElementById('mainImage');
+            const thumbnailsContainer = document.querySelector('.thumbnails');
+            const facilitiesList = document.querySelector('.facilities ul');
+
+            // Initialize main image
+            mainImageElement.src = imagePaths[0];
+
+            // Populate thumbnails
+            imagePaths.forEach((path, index) => {
+                if (index === 0) return; // Skip the first image
+                const thumbnail = document.createElement('img');
+                thumbnail.src = path;
+                thumbnail.alt = `Thumbnail ${index}`;
+                thumbnail.onclick = () => swapImage(thumbnail);
+                thumbnailsContainer.appendChild(thumbnail);
+            });
+
+            // Populate facilities list
+            facilities.forEach(facility => {
+                const li = document.createElement('li');
+                const img = document.createElement('img');
+                img.src = facility.img;
+                img.alt = facility.text;
+                img.width = 20;
+                img.height = 20;
+                li.appendChild(img);
+                li.appendChild(document.createTextNode(facility.text));
+                facilitiesList.insertBefore(li, facilitiesList.lastChild);
+            });
+
+            // Add 'See more facilities' link
+            const seeMoreLi = document.createElement('li');
+            const seeMoreLink = document.createElement('a');
+            seeMoreLink.href = "#";
+            seeMoreLink.textContent = "See more facilities";
+            seeMoreLi.appendChild(seeMoreLink);
+            facilitiesList.appendChild(seeMoreLi);
+        });
+
+        function swapImage(element) {
+            const mainImage = document.getElementById('mainImage');
+            const tempSrc = mainImage.src;
+            mainImage.src = element.src;
+            element.src = tempSrc;
+        }
+    </script>
+</head>
+<body>
+        <a href="index.html"><img src="img/logo.png" alt="Travelista Tours" class="logo"></a>
+    <div class="container">
+        <div class="image">
+            <img id="mainImage" src="" alt="Sample Location">
+        </div>
+        <div class="thumbnails"></div>
+        <div class="details">
+            <h1>Dubai</h1>
+            <p>Location: Dubai</p>
+            <p>
+                Dubai, located on the southeast coast of the Persian Gulf, is one of the seven emirates that make up the United Arab Emirates (UAE). Known for its striking modern architecture, opulent lifestyle, and dynamic economy, Dubai has transformed from a small fishing and trading village in the early 18th century to a global business hub. The discovery of oil in the 1960s spurred rapid development, but today Dubai's economy is diversified, with strong sectors in tourism, aviation, real estate, and financial services. The city is famous for iconic landmarks such as the Burj Khalifa, the tallest building in the world, and the Palm Jumeirah, an artificial archipelago. With a hot desert climate, Dubai experiences scorching summers and mild winters. Its population is cosmopolitan, featuring a significant expatriate community, making it a vibrant and culturally diverse metropolis.
+            </p>
+        </div>
+        <div class="ratings">
+            <p class="rating-stars">★★★★☆</p>
+        </div>
+        <div class="button-container">
+            <p class="price">$1,000</p>
+            <a href="#" class="book-now">Book Now</a>
+        </div>
+        <div class="facilities">
+            <h2>Our best facilities</h2>
+            <ul></ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Trip Package</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 2em;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 70px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: left;
+            width: 300px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card h2 {
+            font-size: 1.2em;
+            margin: 10px;
+            color: #333;
+        }
+
+        .card .rating {
+            font-size: 1em;
+            color: #ffcc00;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card .rating span {
+            margin-left: 5px;
+            color: #333;
+        }
+
+        .card .price {
+            font-size: 1.2em;
+            color: #333;
+            margin: 10px;
+        }
+
+        .card .price span {
+            font-weight: bold;
+            color: #ff5722;
+        }
+
+        .card .btn {
+            display: block;
+            width: calc(100% - 20px);
+            margin: 10px auto;
+            padding: 10px;
+            background-color: transparent;
+            color: #007bff;
+            border: 2px solid #007bff;
+            border-radius: 20px;
+            font-size: 1em;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .card .btn:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .card .btn:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0,123,255,0.5);
+        }
+                .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px; /* Adjust size as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+   <a href="index.html"><img src="img/logo.png" alt="Travelista Tours" class="logo"></a>
+    <div class="container">
+        <h1 class="title">Best Trip Package</h1>
+        <p class="subtitle">Explore your suitable and dream places around the world. Here you can find your right destination.</p>
+        <div class="cards">
+            <div class="card">
+                <img src="/img/Screenshot 2023-07-14 173347.png" alt="Santorini" style="height: 300;width: 200;">
+                <h2>Santorini, Aegean Sea</h2>
+                <div class="rating">
+                    ⭐ <span>4.2</span>
+                </div>
+                <p class="price">From <span>₹30000</span></p>
+                <button class="btn">Book Now</button>
+            </div>
+            <div class="card">
+                <img src="/img/Screenshot 2023-07-14 173807.png"  alt="Machu Picchu" style="height: 300;width: 200;">
+                <h2>Machu Picchu, Peru</h2>
+                <div class="rating">
+                    ⭐ <span>4.5</span>
+                </div>
+                <p class="price">From <span>₹45000</span></p>
+                <button class="btn">Book Now</button>
+            </div>
+            <div class="card">
+                <img src="/img/Screenshot 2023-07-14 174151.png" alt="Grand Canyon" style="height: 300;width: 200;">
+                <h2>Grand Canyon National Park, Arizona</h2>
+                <div class="rating">
+                    ⭐ <span>4.7</span>
+                </div>
+                <p class="price">From <span>₹40000</span></p>
+                <button class="btn">Book Now</button>
+            </div>
+            <div class="card">
+                <img src="/img/london.jpg" alt="London" style="height: 300;width: 200;">
+                <h2>London</h2>
+                <div class="rating">
+                    ⭐ <span>4.2</span>
+                </div>
+                <p class="price">From <span>₹30000</span></p>
+                <a href="Place1.html" style="text-decoration: none;"><button class="btn">Book Now</button></a>
+            </div>
+            <div class="card">
+                <img src="/img/dubai.webp" alt="Dubai"style="height: 300;width: 200;">
+                <h2>Dubai</h2>
+                <div class="rating">
+                    ⭐ <span>4.5</span>
+                </div>
+                <p class="price">From <span>₹45000</span></p>
+                <a href="Place.html" style="text-decoration: none;"><button class="btn">Book Now</button></a>
+            </div>
+            <div class="card">
+                <img src="/img/maldives.jpg" alt="Maldives" style="height: 300;width: 200;">
+                <h2>Maldives</h2>
+                <div class="rating">
+                    ⭐ <span>4.7</span>
+                </div>
+                <p class="price">From <span>₹40000</span></p>
+                <a href="Place2.html" style="text-decoration: none;"><button class="btn">Book Now</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

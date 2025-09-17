@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="Feedback.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+
+<body>
+    <a href="index.html"><img src="img/logo.png" alt="Travelista Tours" class="logo"></a>
+    <div class="container">
+        <h1>RATE EVER NOTE WEB</h1>
+        <form action="index.html" method="post">
+            <div class="rating-section">
+                <div class="rating-question">Is easy to use</div>
+                <div class="stars" id="easeOfUse-stars-container" data-rating="0"></div>
+            </div>
+            <div class="rating-section">
+                <div class="rating-question">Has the features I want</div>
+                <div class="stars" id="features-stars-container" data-rating="0"></div>
+            </div>
+            <div class="rating-section">
+                <div class="rating-question">Feels fast and responsive</div>
+                <div class="stars" id="speed-stars-container" data-rating="0"></div>
+            </div>
+            <div class="rating-section">
+                <div class="rating-question">Is reliable</div>
+                <div class="stars" id="reliability-stars-container" data-rating="0"></div>
+            </div>
+
+            <div class="feedback-input-section">
+                <label for="feedback-input">Your feedback:</label>
+                <textarea id="feedback-input" name="feedback" placeholder="Remember to be nice please!" required></textarea>
+            </div>
+
+            <div class="consent-section">
+                <input type="checkbox" id="email-consent" name="email_consent">
+                <label for="email-consent">It’s OK to email me more questions in the future</label>
+            </div>
+
+            <div class="button-container">
+                <button class="button cancel-button" onclick="location.href='index.html';">Cancel</button>
+                <button type="submit" class="button done-button">Done</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="feedback.js" defer></script>
+</body>
+
+</html>

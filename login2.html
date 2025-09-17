@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelista Tours</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background: url('backkk.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .background {
+            width: 50%;
+            height: 80%;
+            display: flex;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .layout {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .left-panel {
+            flex: 1;
+            position: relative;
+            background: url(img/paris.jpg) no-repeat center center/cover;
+        }
+
+        .side-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Hide the image element since we're using background image */
+        }
+
+        .right-panel {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        .form-container .form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .form-container .form.active {
+            display: block;
+        }
+
+        .form h2 {
+            margin: 0;
+            font-size: 2em;
+            color: #007bff;
+        }
+
+        .form p {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .form label {
+            display: block;
+            text-align: left;
+            margin: 10px 0 5px;
+        }
+
+        .form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form button:hover {
+            background: #0056b3;
+        }
+
+        .form a {
+            color: #007bff;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .form .divider {
+            margin: 20px 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .validation-message {
+            color: red;
+            font-size: 0.9em;
+            text-align: left;
+            margin: 5px 0 10px;
+        }
+
+        .social-login {
+            display: flex;
+        }
+
+        .social-login button {
+            width: 32%;
+            margin: 0 1%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .social-login .google {
+            background: #db4437;
+        }
+
+        .social-login .facebook {
+            background: #4267b2;
+        }
+
+        .social-login .apple {
+            background: #000;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px; /* Adjust size as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <a href="index.html"><img src="img/logo.png" alt="Travelista Tours" class="logo"></a>
+    <div class="background">
+        <div class="layout">
+            <div class="left-panel">
+                <img src="" alt="Travelista Tours" class="side-image">
+            </div>
+            <div class="right-panel">
+                <div class="form-container">
+                    <div id="signin-form" class="form active">
+                        <h2>Welcome</h2>
+                        <p>Login with Email</p>
+                        <form id="loginForm" onsubmit="return validateLoginForm()">
+                            <label for="email">Email Id</label>
+                            <input type="email" id="email" name="email" placeholder="thisuix@mail.com">
+                            <p id="emailError" class="validation-message" style="color: #db4437;"></p>
+
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="********">
+                            <p id="passwordError" class="validation-message" style="color: #db4437;"></p>
+
+                            <button type="submit">LOGIN</button>
+
+                            <a href="#">Forgot your password?</a>
+
+                            <div class="divider">-------- OR --------</div>
+
+                            <div class="social-login">
+                                <button type="button" class="google"><i class="fab fa-google"></i></button>
+                                <button type="button" class="facebook"><i class="fab fa-facebook-f"></i></button>
+                                <button type="button" class="apple"><i class="fab fa-apple"></i></button>
+                            </div>
+
+                            <p>Don't have an account? <a href="#" onclick="switchForm('signup-form')">Register Now</a></p>
+                        </form>
+                    </div>
+
+                    <div id="signup-form" class="form">
+                        <h2>Create Account</h2>
+                        <p>Create account with Email</p>
+                        <form id="signupForm" onsubmit="return validateSignupForm()">
+                            <label for="new-email">Email Id</label>
+                            <input type="email" id="new-email" name="email" placeholder="thisuix@mail.com">
+                            <p id="newEmailError" class="validation-message" style="color: #db4437;"></p>
+
+                            <label for="new-password">Password</label>
+                            <input type="password" id="new-password" name="password" placeholder="********">
+                            <p id="newPasswordError" class="validation-message" style="color: #db4437;"></p>
+
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" name="confirm-password" placeholder="********">
+                            <p id="confirmPasswordError" class="validation-message" style="color: #db4437;"></p>
+
+                            <button type="submit">SIGN UP</button>
+
+                            <div class="divider">-------- OR --------</div>
+
+                            <div class="social-login">
+                                <button type="button" class="google"><i class="fab fa-google"></i></button>
+                                <button type="button" class="facebook"><i class="fab fa-facebook-f"></i></button>
+                                <button type="button" class="apple"><i class="fab fa-apple"></i></button>
+                            </div>
+
+                            <p>Already have an account? <a href="#" onclick="switchForm('signin-form')">Sign In</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchForm(formId) {
+            document.getElementById('signin-form').classList.remove('active');
+            document.getElementById('signup-form').classList.remove('active');
+            document.getElementById(formId).classList.add('active');
+        }
+
+        function validateLoginForm() {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var isValid = true;
+
+            if (!email) {
+                document.getElementById('emailError').innerText = 'Email is required';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').innerText = '';
+            }
+
+            if (!password) {
+                document.getElementById('passwordError').innerText = 'Password is required';
+                isValid = false;
+            } else {
+                document.getElementById('passwordError').innerText = '';
+            }
+
+            return isValid;
+        }
+
+        function validateSignupForm() {
+            var email = document.getElementById('new-email').value;
+            var password = document.getElementById('new-password').value;
+            var confirmPassword = document.getElementById('confirm-password').value;
+            var isValid = true;
+
+            if (!email) {
+                document.getElementById('newEmailError').innerText = 'Email is required';
+                isValid = false;
+            } else {
+                document.getElementById('newEmailError').innerText = '';
+            }
+
+            if (!password) {
+                document.getElementById('newPasswordError').innerText = 'Password is required';
+                isValid = false;
+            } else {
+                document.getElementById('newPasswordError').innerText = '';
+            }
+
+            if (!confirmPassword) {
+                document.getElementById('confirmPasswordError').innerText = 'Please confirm your password';
+                isValid = false;
+            } else if (password !== confirmPassword) {
+                document.getElementById('confirmPasswordError').innerText = 'Passwords do not match';
+                isValid = false;
+            } else {
+                document.getElementById('confirmPasswordError').innerText = '';
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>    
+    

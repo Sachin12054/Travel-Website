@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Planner</title>
+    <link rel="icon"
+        href="img/A T logo with a white background and a square shape, connected to nature for a travel company.png"
+        type="image/x-icon" />
+    <style>
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #b1e5f748;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            transform: scale(1.05); 
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #add8e6e3;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); 
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-weight: bold;
+            font-family: inherit; 
+        }
+
+        p.validation-message {
+            color: red;
+            font-size: 14px;
+            margin: -12px 0 16px;
+        }
+
+        button {
+            background-color: #4c854e;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: inherit;
+            transition: transform 0.3s ease-in-out; 
+        }
+
+        button:hover {
+            background-color: #87af89;
+            transform: scale(1.15); 
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Add custom dropdown arrow */
+            background-repeat: no-repeat;
+            background-position: right 10px top 50%;
+            background-size: 24px auto;
+            padding-right: 30px;
+            font-weight: bold;
+            font-family: inherit;
+        }
+
+        select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px; /* Adjust size as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+
+
+<body>
+  
+    <header>
+        <h1>Trip Planner</h1>
+    </header>
+      <a href="index.html"><img src="img/logo.png" alt="Travelista Tours" class="logo"></a>
+
+
+    <form id="tripForm">
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" name="destination" required>
+        <p id="destinationMessage" class="validation-message"></p>
+
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" required>
+        <p id="startDateMessage" class="validation-message"></p>
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" required>
+        <p id="endDateMessage" class="validation-message"></p>
+
+        <label for="budget">Budget:</label>
+        <input type="number" id="budget" name="budget" required>
+        <p id="budgetMessage" class="validation-message"></p>
+
+        <label for="accommodation">Accommodation:</label>
+        <select id="accommodation" name="accommodation">
+            <option value="hotel">Hotel</option>
+            <option value="apartment">Apartment</option>
+            <option value="hostel">Hostel</option>
+        </select>
+
+        <button type="submit">Plan My Trip</button>
+    </form>
+
+    <script>
+        document.getElementById('tripForm').addEventListener('submit', function (event) {
+            let isValid = true;
+
+            const startDate = new Date(document.getElementById('startDate').value);
+            const endDate = new Date(document.getElementById('endDate').value);
+            const today = new Date();
+            const maxDate = new Date(today);
+            maxDate.setMonth(today.getMonth() + 2);
+
+            const startDateMessage = document.getElementById('startDateMessage');
+            const endDateMessage = document.getElementById('endDateMessage');
+            const budgetMessage = document.getElementById('budgetMessage');
+
+            startDateMessage.textContent = '';
+            endDateMessage.textContent = '';
+            budgetMessage.textContent = '';
+
+            if (startDate < today) {
+                startDateMessage.textContent = 'Start date cannot be in the past.';
+                isValid = false;
+            }
+
+            if (endDate < startDate) {
+                endDateMessage.textContent = 'End date cannot be before the start date.';
+                isValid = false;
+            }
+
+            if (startDate > maxDate) {
+                startDateMessage.textContent = 'Start date cannot be more than 2 months in the future.';
+                isValid = false;
+            }
+
+            const budget = document.getElementById('budget').value;
+            if (budget < 100) {
+                budgetMessage.textContent = 'Budget should be at least $100.';
+                isValid = false;
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

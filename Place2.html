@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample 103</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .thumbnails img {
+            width: 100px;
+            height: auto;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+        }
+        .details {
+            margin-top: 20px;
+        }
+        .details h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .details p {
+            font-size: 14px;
+            color: #555;
+        }
+        .ratings, .reviews {
+            margin-top: 20px;
+        }
+        .rating-stars {
+            color: #f5c518;
+        }
+        .reviews .review {
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .review-date {
+            color: #888;
+            font-size: 12px;
+        }
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .button-container .price {
+            font-size: 18px;
+            color: #28a745;
+        }
+        .button-container .book-now {
+            background-color: #ffc107;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .facilities {
+            margin-top: 20px;
+        }
+        .facilities h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .facilities ul {
+            list-style: none;
+            padding: 0;
+        }
+        .facilities ul li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .facilities ul li img {
+            margin-right: 10px;
+        }
+        .facilities ul li a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .facilities ul li a:hover {
+            text-decoration: underline;
+        }
+                .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px; /* Adjust size as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Dynamic data
+            const data = {
+                mainImage: "/dedicated destinations/Maldives/gallery/maldive1.png",
+                thumbnails: [
+                    "/dedicated destinations/Maldives/gallery/maldive2.png",
+                    "/dedicated destinations/Maldives/gallery/maldive3.png",
+                    "/dedicated destinations/Maldives/gallery/maldive4.png"
+                ],
+                title: "Maldives",
+                location: "Maldives",
+                description: "The Maldives, a tropical paradise nestled in the Indian Ocean, beckons with its breathtaking beauty and unparalleled serenity...",
+                rating: "★★★★★",
+                price: "$1,500",
+                facilities: [
+                    { img: "/img/air-conditioner.png", text: "Air conditioner" },
+                    { img: "/img/Clock.png", text: "Receptionist 24h" },
+                    { img: "/img/swimming-pool.png", text: "Swimming pool" },
+                    { img: "/img/cocktail.png", text: "Lounge bar & cafe" }
+                ]
+            };
+
+            // Update DOM elements with dynamic data
+            const mainImageElement = document.getElementById('mainImage');
+            const thumbnailsContainer = document.querySelector('.thumbnails');
+            const detailsElement = document.querySelector('.details');
+            const ratingsElement = document.querySelector('.ratings');
+            const priceElement = document.querySelector('.price');
+            const facilitiesList = document.querySelector('.facilities ul');
+
+            mainImageElement.src = data.mainImage;
+
+            data.thumbnails.forEach((path, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.src = path;
+                thumbnail.alt = `Thumbnail ${index}`;
+                thumbnail.onclick = () => swapImage(thumbnail);
+                thumbnailsContainer.appendChild(thumbnail);
+            });
+
+            detailsElement.innerHTML = `
+                <h1>${data.title}</h1>
+                <p>Location: ${data.location}</p>
+                <p>${data.description}</p>
+            `;
+
+            ratingsElement.innerHTML = `<p class="rating-stars">${data.rating}</p>`;
+            priceElement.textContent = data.price;
+
+            data.facilities.forEach(facility => {
+                const li = document.createElement('li');
+                const img = document.createElement('img');
+                img.src = facility.img;
+                img.alt = facility.text;
+                img.width = 20;
+                img.height = 20;
+                li.appendChild(img);
+                li.appendChild(document.createTextNode(facility.text));
+                facilitiesList.appendChild(li);
+            });
+
+            const seeMoreLi = document.createElement('li');
+            const seeMoreLink = document.createElement('a');
+            seeMoreLink.href = "#";
+            seeMoreLink.textContent = "See more facilities";
+            seeMoreLi.appendChild(seeMoreLink);
+            facilitiesList.appendChild(seeMoreLi);
+        });
+
+        function swapImage(element) {
+            const mainImage = document.getElementById('mainImage');
+            const tempSrc = mainImage.src;
+            mainImage.src = element.src;
+            element.src = tempSrc;
+        }
+    </script>
+</head>
+<body>
+    <a href="index.html"><img src="img/logo.png" alt="Travelista Tours" class="logo"></a>
+    <div class="container">
+        <div class="image">
+            <img id="mainImage" src="" alt="Sample Location">
+        </div>
+        <div class="thumbnails"></div>
+        <div class="details"></div>
+        <div class="ratings"></div>
+        <div class="button-container">
+            <p class="price"></p>
+            <a href="#" class="book-now">Book Now</a>
+        </div>
+        <div class="facilities">
+            <h2>Our best facilities</h2>
+            <ul></ul>
+        </div>
+    </div>
+</body>
+</html>

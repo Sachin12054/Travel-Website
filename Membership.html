@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #4569ff;
+            margin: 0;
+            position: relative;
+        }
+        .pricing-table {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            width: 50%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+            padding-top: 50px; /* Adjust padding for logo space */
+        }
+        .tourguide-logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px; /* Adjust size as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .pricing-plan {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 20px;
+            width: 30%;
+            box-sizing: border-box;
+            margin: 10px;
+            position: relative; /* Add position relative for the ribbon */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .recommended::before {
+            content: "RECOMMENDED";
+            color: white;
+            background-color: #8c4aff;
+            padding: 3px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            position: absolute;
+            top: -25px;
+            right: 10px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .plan-price {
+            font-size: 36px;
+            color: #fff;
+            background: #fff;
+            border-radius: 50%;
+            display: inline-block;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .pricing-plan.basic .plan-price {
+            background: #fdd747;
+        }
+        .pricing-plan.premium .plan-price {
+            background: #ae79f4;
+        }
+        .pricing-plan.ultimate .plan-price {
+            background: #6fdc8c;
+        }
+        .plan-title {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .plan-details {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .purchase-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-color: #ae79f4;
+            border-radius: 25px;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: auto; /* Ensure buttons are at the bottom */
+            background-color: #fff; /* Initial background color */
+            color: #000; /* Initial text color */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        }
+        .basic .purchase-btn:hover {
+            background-color: #fdd747;
+            color: #fff;
+        }
+        .premium .purchase-btn:hover {
+            background-color: #ae79f4;
+            color: #fff;
+        }
+        .ultimate .purchase-btn:hover {
+            background-color: #6fdc8c;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="tourguide-logo">
+       <a href="index.html"><img src="img/logo.png" alt="Tourguide Logo"></a>
+    </div>
+    <div class="pricing-table">
+        <div class="pricing-plan basic">
+            <div class="plan-price">$9</div>
+            <div class="plan-title">Basic</div>
+            <div class="plan-details">
+                <p>5% Discounts on Accommodations</p>
+                <p>Exclusive Travel Guides</p>
+                <p>Monthly Travel Webinars</p>
+                <p>Priority Customer Support</p>
+            </div>
+            <button class="purchase-btn">Purchase</button>
+        </div>
+        <div class="pricing-plan premium recommended">
+            <div class="plan-price">$19</div>
+            <div class="plan-title">Premium</div>
+            <div class="plan-details">
+                <p>15% Discounts on Accommodations</p>
+                <p>Exclusive Travel Guides</p>
+                <p>Monthly Travel Webinars</p>
+                <p>Points/Rewards Program</p>
+                <p>Cancellation Protection</p>
+                <p>Exclusive Travel Merchandise</p>
+            </div>
+            <button class="purchase-btn">Purchase</button>
+        </div>
+        <div class="pricing-plan ultimate">
+            <div class="plan-price">$29</div>
+            <div class="plan-title">Ultimate</div>
+            <div class="plan-details">
+                <p>25% Discounts on Accommodations</p>
+                <p>Basic and Premium plan perks included</p>
+                <p>Airport Lounge Access and Free Travel Insurance</p>
+                <p>Unlimited Access to Premium Content</p>
+            </div>
+            <button class="purchase-btn">Purchase</button>
+        </div>
+    </div>
+</body>
+</html>
